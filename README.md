@@ -1,69 +1,52 @@
-# FutureMoney · 资金未来推演
 
-把每一笔（含周期性）资金变动记录为**真实可编辑的记录**，用现代化前台界面直观推演未来数月、数年的资金走势。
+# Balance Window
 
-> 本仓库已推翻旧版重新设计。设计文档见 [`docs/`](./docs/README.md)。
+Balance Window 是一个“本地优先”的个人资金未来推演工具，同时维护公开的 Web 版本和原生 iOS 版本。它根据当前余额和用户已知的工资、账单及计划支出，推演未来余额走势和可能的最低点。
 
-> **项目状态（2026-07-23）**：当前版本已完成阶段验收，进入暂停开发 / 低频维护状态。线上服务继续运行，近期不规划新功能；恢复开发前请先阅读 [`docs/15-阶段收尾与维护说明.md`](./docs/15-阶段收尾与维护说明.md)。
+> 品牌状态：当前品牌为 **Balance Window**，目标 App Store 名称为 **Balance Window: Cash Flow**。`FutureMoney` 仅作为仓库路径、生产 Bundle ID、Cloudflare 地址和历史记录中的兼容身份保留。唯一品牌事实源见 [`docs/69-Balance Window品牌事实源与历史名称迁移规范.md`](./docs/69-Balance%20Window品牌事实源与历史名称迁移规范.md)；迁移进度见 [`docs/71-Balance Window品牌迁移执行记录.md`](./docs/71-Balance%20Window品牌迁移执行记录.md)。
 
-## 这是什么
+## 版本目录
 
-一个**本地优先、离线可用**的个人资金规划工具：
+```text
+FutureMoney/       # 历史仓库/技术目录名；当前品牌为 Balance Window
+├── web/       # 公开 Web 版本：React + TypeScript + Vite + Pages Functions
+├── ios/       # 原生 iOS 版本：SwiftUI + Apple 登录 + 云同步
+├── docs/      # 产品、算法、Web 运维、iOS 方案和验收记录
+└── wrangler.jsonc
+```
 
-- 管理多个账户（现金、理财等），各自有初始余额与起始日；
-- 录入一次性 / 周期性（日·周·月·季·半年·年）的收支；
-- 周期收支会**展开为一笔笔真实记录**，任意一笔（哪怕是未来的）都能单独改/删；
-- 总资产 + 各账户的资金走势曲线，可点击某天进行增删改；
-- 对一组周期记录可按时间勾选后批量删/改；
-- 数据本地优先，登录后可选择 AES-256-GCM 加密云同步，支持 JSON 导入/导出备份；
-- 深 / 浅色主题。
+Web 源码继续保留在公开仓库中，不引入私有子模块或访问限制。Web 的历史实现、公开 API 设计和生产运维文档也继续开放；Apple 私钥、Cloudflare Secret、Session Cookie 和用户财务数据永远不进入仓库。
 
-## 技术栈
+## Web 版本
 
-React + TypeScript + Vite · Semi Design · VChart · Zustand · Hono · Cloudflare Pages/D1 · Vitest
-
-## 在线体验
-
-<https://future-money.pages.dev>
-
-当前部署使用 Cloudflare Pages，GitHub `main` 推送后自动构建；Pages Functions 复用已创建的 APAC D1。游客数据只保存在当前浏览器，登录后由用户明确选择是否上传为加密云端快照；多设备冲突不会静默覆盖。
-
-## 开发
+Web 源码与工具链位于 [`web/`](./web/)，当前已验证的公开体验地址仍为 <https://future-money.pages.dev>。这是历史技术 URL，不表示当前品牌仍为 FutureMoney，也不应据此虚构尚未部署的 Balance Window 域名。
 
 ```bash
 npm install
-npm run dev        # 启动开发服务器（默认 http://localhost:3000）
-npm run test       # 运行单元测试（Vitest）
-npm run build      # 类型检查 + 构建静态产物到 dist/
-npm run preview    # 预览构建产物
-```
-
-Cloudflare 工程骨架使用现有 Pages 项目提供 SPA，并由 Pages Functions 提供 `/api/*`。首次启动前初始化本地 D1：
-
-```bash
-npm run db:migrate:local
+npm run dev
+npm test
 npm run build
 npm run dev:pages
-curl http://localhost:8788/api/v1/health
 ```
 
-远程 D1 已绑定在 `wrangler.jsonc`。数据库 schema 更新后，先在本地验证，再执行 `npm run db:migrate:remote`。认证与云同步需要通过 Cloudflare Pages Secret 配置 `BETTER_AUTH_SECRET`、OAuth Provider Secret 和 `DATA_ENCRYPTION_KEY_V1`，密钥不得写入仓库或 `.env.example`。
+根目录命令是 Web workspace 的兼容入口，实际代码、测试和 Pages Functions 均在 `web/`。Cloudflare Pages 的输出目录为 `web/dist/`，根目录 `wrangler.jsonc` 保留 D1 和 Pages 项目配置。
 
-## 使用指南
+## iOS 版本
 
-1. **建账户**：左侧「账户」面板新建账户，设置名称、初始余额、起始日与配色。
-2. **记一笔**：账本区「记一笔」录入单笔；打开「周期重复」可设频率/间隔/结束条件，并在保存前预览将生成的记录数。
-3. **看走势**：上方曲线展示总资产与各账户余额，可切换日/周/月粒度与时间范围；点击曲线某天查看当日明细。
-4. **改 / 删**：账本行内可改/删任意一笔；点击行尾「整组」图标或「周期」标签，可对一组周期记录按时间勾选（全选/反选/仅未来/仅过去）后批量改金额、改分类或删除。
-5. **分类**：顶部「分类管理」维护分类，用于标记工资、房贷、投资等。
-6. **备份**：顶部「导出」下载 JSON；「导入」时可预览摘要并选择「覆盖」或「合并（按 ID）」。
-7. **主题**：右上角切换深 / 浅色，图表随主题联动。
-8. **云同步**：社交账号登录后选择上传本机数据、使用云端数据或暂时仅存本机；顶部状态会显示同步、离线或冲突状态。
+原生工程位于 [`ios/BalanceWindowIOS/BalanceWindowIOS.xcodeproj`](./ios/BalanceWindowIOS/BalanceWindowIOS.xcodeproj)。工程和源码已切换为 Balance Window 语义命名；生产 Bundle ID 仍保持 `com.ponzio.futuremoney`。它不使用 WebView，与 Web 版本共享服务端数据协议，但使用独立 SwiftUI 界面。
 
-## 设计文档
+- Bundle ID：`com.ponzio.futuremoney`；
+- 登录：Apple only；
+- 免费版：最多两个资金账户；
+- 云同步：复用 `/api/v1/vault` 加密快照；
+- 首版功能上限：最多两个资金账户；不包含 AI、小组件、订阅和广告。
 
-完整设计见 [`docs/README.md`](./docs/README.md)：需求、数据模型、核心算法、界面交互、技术架构、实施计划。
+真机 Apple 登录和生产配置的最新进度见 [`docs/19-iOS登录生产配置与真机测试记录.md`](./docs/19-iOS登录生产配置与真机测试记录.md)。
 
-## 当前状态
+## 文档
 
-✅ M0~M6、Cloudflare 工程骨架、GitHub 社交账号认证、加密云端快照与 revision 冲突处理均已实现。当前功能基线为 `1bfd1e2`，后续仅保留必要维护。里程碑与收尾状态见 [`docs/14-云端数据存储与冲突处理实施.md`](./docs/14-云端数据存储与冲突处理实施.md) 和 [`docs/15-阶段收尾与维护说明.md`](./docs/15-阶段收尾与维护说明.md)。
+从 [`docs/69-Balance Window品牌事实源与历史名称迁移规范.md`](./docs/69-Balance%20Window品牌事实源与历史名称迁移规范.md) 和 [`docs/README.md`](./docs/README.md) 开始。品牌、版本边界、生产配置和验收记录统一从那里进入。
+
+## 开源边界
+
+本仓库的 Web 版本继续作为公开代码维护。整理目录不改变 Web 的公开属性，也不把 iOS 生产凭据或服务端 Secret 放入公开代码。iOS 源码是否随公开仓库发布，以产品负责人最终的发布边界决定；无论公开与否，真实凭据、用户数据和部署权限始终保留在本机/云平台的安全配置中。
