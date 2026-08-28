@@ -3,7 +3,7 @@
 
 Balance Window 是一个“本地优先”的个人资金未来推演工具，同时维护公开的 Web 版本和原生 iOS 版本。它根据当前余额和用户已知的工资、账单及计划支出，推演未来余额走势和可能的最低点。
 
-> 品牌状态：当前品牌为 **Balance Window**，目标 App Store 名称为 **Balance Window: Cash Flow**。`FutureMoney` 仅作为仓库路径、生产 Bundle ID、Cloudflare 地址和历史记录中的兼容身份保留。唯一品牌事实源见 [`docs/69-Balance Window品牌事实源与历史名称迁移规范.md`](./docs/69-Balance%20Window品牌事实源与历史名称迁移规范.md)；迁移进度见 [`docs/71-Balance Window品牌迁移执行记录.md`](./docs/71-Balance%20Window品牌迁移执行记录.md)。
+> 品牌状态：当前品牌为 **Balance Window**，目标 App Store 名称为 **Balance Window: Cash Flow**。`FutureMoney` 仅作为仓库路径、生产 Bundle ID、Cloudflare 地址和历史记录中的技术身份保留；本次迁移不保留旧业务数据兼容逻辑。唯一品牌事实源见 [`docs/69-Balance Window品牌事实源与历史名称迁移规范.md`](./docs/69-Balance%20Window品牌事实源与历史名称迁移规范.md)；迁移进度见 [`docs/71-Balance Window品牌迁移执行记录.md`](./docs/71-Balance%20Window品牌迁移执行记录.md)。
 
 ## 版本目录
 
