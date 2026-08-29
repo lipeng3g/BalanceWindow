@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Support and frequently asked questions for Balance Window.">
+  <title>Balance Window Support</title>
+  <style>
+    :root { color-scheme: light dark; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif; }
+    body { margin: 0; background: #f5f1eb; color: #25211d; }
+    main { max-width: 780px; margin: 0 auto; padding: 48px 22px 72px; }
+    article { background: #fffdf9; border: 1px solid #e8ded3; border-radius: 24px; padding: 34px; box-shadow: 0 18px 48px #69452c14; }
+    h1 { margin: 0 0 8px; font-size: clamp(30px, 6vw, 42px); letter-spacing: -.035em; }
+    h2 { margin: 32px 0 10px; font-size: 20px; }
+    p, li { line-height: 1.7; }
+    li + li { margin-top: 12px; }
+    a { color: #a45132; }
+    .meta { color: #736a62; font-size: 14px; }
+    details { margin-top: 34px; border-top: 1px solid #e8ded3; padding-top: 22px; }
+    summary { cursor: pointer; color: #a45132; font-weight: 650; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #17130f; color: #f3ece5; }
+      article { background: #211b16; border-color: #493b31; }
+      .meta { color: #b9aca1; }
+      details { border-color: #493b31; }
+    }
+  </style>
+</head>
+<body>
+  <main><article>
+    <h1>Balance Window Support</h1>
+    <p class="meta">Plan ahead with a clear view of your future cash flow.</p>
+
+    <h2>Frequently asked questions</h2>
+    <ul>
+      <li><strong>Is Balance Window a bookkeeping app?</strong><br>Not quite. It is designed to forecast how planned and recurring income or expenses may change your balance over time. You do not need to record every purchase.</li>
+      <li><strong>Where is my data stored?</strong><br>The iOS app stores data locally by default. You can export a JSON backup at any time. Cloud sync is used only after you choose Sign in with Apple.</li>
+      <li><strong>Do I need an account?</strong><br>No. You can use the core app locally without signing in. Apple sign-in is optional and enables cloud backup and synchronization.</li>
+      <li><strong>Why can I not create a third account?</strong><br>Version 1.0 supports up to two money accounts. Archived accounts also count toward this limit.</li>
+      <li><strong>Can I move data between the web and iOS apps?</strong><br>Both apps use a compatible JSON backup format and can import or export independently. Automatic cross-platform sync is not currently provided.</li>
+      <li><strong>What should I do if sign-in or sync fails?</strong><br>Your local data remains available. First export a local JSON backup, then check your network and Apple sign-in status. The sync screen will ask you to choose a version whenever local and cloud data conflict.</li>
+    </ul>
+
+    <h2>Report a problem</h2>
+    <p>Open an issue in the <a href="https://github.com/lipeng3g/future-money/issues">Balance Window issue tracker</a> and include the app version, iOS version, device model, steps to reproduce, and the exact error message.</p>
+    <p>Do not post real financial data, Apple credentials, session cookies, tokens, or private keys.</p>
+
+    <h2>Open-source web app</h2>
+    <p>The Balance Window web app remains open source. <a href="https://github.com/lipeng3g/future-money">View the source on GitHub</a>.</p>
+
+    <details lang="zh-CN">
+      <summary>简体中文说明</summary>
+      <h2>常见问题</h2>
+      <p>Balance Window 主要用于推演未来现金流趋势，并不是要求记录每笔消费的传统记账软件。iOS 默认将数据保存在本机，无需登录即可使用；Apple 登录仅用于可选的云备份和同步。版本 1.0 最多支持两个资金账户。</p>
+      <p>如果登录或同步失败，请先导出本机 JSON 备份，再检查网络和 Apple 登录状态。本机与云端数据不一致时，App 会要求你明确选择要保留的版本。</p>
+    </details>
+  </article></main>
+</body>
+</html>

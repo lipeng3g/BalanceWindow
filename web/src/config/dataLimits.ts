@@ -1,0 +1,18 @@
+export const DATA_LIMITS = {
+  accountNameInput: 20,
+  categoryNameInput: 20,
+  noteInput: 50,
+  displayNameInput: 80,
+  moneyInputCharacters: 24,
+  entityId: 200,
+  entityName: 200,
+  note: 2_000,
+  color: 100,
+  vaultBytes: 4 * 1024 * 1024,
+  recurrenceInterval: 999,
+  occurrenceIndex: 1_000_000,
+  accounts: 1_000,
+  transactions: 100_000,
+  series: 20_000,
+  categories: 5_000,
+} as const;

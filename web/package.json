@@ -1,0 +1,48 @@
+{
+  "name": "balance-window",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:pages": "wrangler pages dev dist --port 8788 --config ../wrangler.jsonc",
+    "build": "tsc -b && vite build",
+    "build:functions": "wrangler pages functions build functions --outdir .wrangler/pages-functions --project-directory . --build-output-directory dist --compatibility-date 2026-07-23 --compatibility-flag nodejs_compat",
+    "preview": "vite preview",
+    "cf:types": "wrangler types --config ../wrangler.jsonc",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local --config ../wrangler.jsonc",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote --config ../wrangler.jsonc",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@douyinfe/semi-icons": "^2.100.0",
+    "@douyinfe/semi-ui": "^2.100.0",
+    "@visactor/react-vchart": "^2.1.1",
+    "@visactor/vchart": "^2.1.1",
+    "better-auth": "^1.6.24",
+    "dayjs": "^1.11.21",
+    "drizzle-orm": "^0.45.2",
+    "hono": "^4.12.31",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@better-auth/cli": "^1.4.21",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^26.0.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "5.0.2",
+    "drizzle-kit": "^0.31.10",
+    "jsdom": "^29.1.1",
+    "typescript": "^6.0.3",
+    "vite": "7.1.7",
+    "vitest": "^4.1.9",
+    "wrangler": "^4.113.0"
+  }
+}
