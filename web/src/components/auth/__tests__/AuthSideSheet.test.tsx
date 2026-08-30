@@ -90,8 +90,8 @@ describe('AuthSideSheet', () => {
     await waitFor(() => {
       expect(signInSocial).toHaveBeenCalledWith({
         provider: 'github',
-        callbackURL: window.location.origin,
-        newUserCallbackURL: window.location.origin,
+        callbackURL: `${window.location.origin}/`,
+        newUserCallbackURL: `${window.location.origin}/`,
         errorCallbackURL: `${window.location.origin}/?auth=oauth-error`,
       });
     });

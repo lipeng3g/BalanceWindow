@@ -40,12 +40,12 @@ export default function AuthSideSheet({ visible, onClose }: Props) {
   const handleSocialSignIn = async (provider: AuthProvider) => {
     try {
       setSigningIn(provider);
-      const origin = window.location.origin;
+      const appURL = new URL('/', window.location.origin).toString();
       const result = await authClient.signIn.social({
         provider,
-        callbackURL: origin,
-        newUserCallbackURL: origin,
-        errorCallbackURL: `${origin}/?auth=oauth-error`,
+        callbackURL: appURL,
+        newUserCallbackURL: appURL,
+        errorCallbackURL: `${appURL}?auth=oauth-error`,
       });
       if (result.error) {
         Toast.error(t('auth.startFailed'));

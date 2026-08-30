@@ -76,8 +76,8 @@ The web app applies the same small-input forecasting model on a desktop-sized wo
 The public repository is a small npm workspace. A local preview does not require Apple credentials or a bank connection.
 
 ```bash
-git clone https://github.com/lipeng3g/future-money.git
-cd future-money
+git clone https://github.com/lipeng3g/BalanceWindow.git
+cd BalanceWindow
 npm install
 npm run dev
 ```
@@ -114,4 +114,4 @@ Do not commit Cloudflare secrets, OAuth credentials, Apple private keys, session
 | Privacy | [balancewindow.top/privacy](https://balancewindow.top/privacy) |
 | Support | [balancewindow.top/support](https://balancewindow.top/support) |
 
-The repository slug and a few deployment identifiers retain the historical `FutureMoney` name for update and deployment continuity. The current public product brand is **Balance Window**.
+Some Cloudflare deployment identifiers retain the historical `FutureMoney` name for continuity. The current public repository and product brand are **Balance Window**.

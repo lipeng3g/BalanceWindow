@@ -16,7 +16,6 @@ while IFS= read -r hit; do
 done < <(
   rg -n -i --hidden \
     --glob '!.git/**' \
-    --glob '!.git' \
     --glob '!docs/**' \
     --glob '!node_modules/**' \
     --glob '!web/dist/**' \
@@ -46,10 +45,8 @@ for hit in "${hits[@]}"; do
       if [[ "$line" == *'FutureMoney` 仅作为仓库路径'* ||
             "$line" == *'historical `FutureMoney` name remains only in approved technical identities'* ||
             "$line" == *'historical `FutureMoney` name for update and deployment continuity'* ||
+            "$line" == *'Some Cloudflare deployment identifiers retain the historical `FutureMoney` name for continuity'* ||
             "$line" == *'FutureMoney/       # 历史仓库/技术目录名'* ||
-            "$line" == *'cd future-money'* ||
-            "$line" == *'github.com/lipeng3g/future-money'* ||
-            "$line" == *'raw.githubusercontent.com/lipeng3g/future-money/'* ||
             "$line" == *'future-money.pages.dev'* ||
             "$line" == *'com.ponzio.futuremoney'* ]]; then
         is_allowed=1
@@ -82,7 +79,7 @@ for hit in "${hits[@]}"; do
       [[ "$line" == *"future-money.pages.dev"* || "$line" == *"com.ponzio.futuremoney"* ]] && is_allowed=1
       ;;
     web/src/config/product.ts|web/public/privacy.html|web/public/ios.html|web/public/support.html|web/README.md)
-      [[ "$line" == *"github.com/lipeng3g/future-money"* || "$line" == *"future-money.pages.dev"* ]] && is_allowed=1
+      [[ "$line" == *"future-money.pages.dev"* ]] && is_allowed=1
       ;;
   esac
 

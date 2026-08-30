@@ -15,21 +15,10 @@ web/.wrangler/
 .env.*
 !.env.example
 temp/
-.workbuddy/
-/ios/
-/UI/
-ios/DerivedData*/
-DerivedData*/
-
-# Xcode per-user state and release/test artifacts must never enter a
-# reproducible source snapshot.
-**/xcuserdata/
-*.xcuserstate
-*.xcresult
-*.xcarchive
-
-# Apple signing material is always supplied by Xcode/Apple tooling and must
-# not be copied into a source snapshot.
+ios/
+UI/
+docs/
+AGENTS.md
 *.p8
 AuthKey_*
 *.mobileprovision
