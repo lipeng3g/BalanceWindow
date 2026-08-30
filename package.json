@@ -9,6 +9,7 @@
     "dev": "npm --workspace web run dev",
     "dev:pages": "npm --workspace web run dev:pages",
     "build": "npm --workspace web run build && npm --workspace web run build:functions && cp web/.wrangler/pages-functions/index.js web/dist/_worker.js",
+    "build:marketing": "node scripts/build-marketing.mjs",
     "build:functions": "npm --workspace web run build:functions && cp web/.wrangler/pages-functions/index.js web/dist/_worker.js",
     "preview": "npm --workspace web run preview",
     "cf:types": "npm --workspace web run cf:types",

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:pages": "wrangler pages dev dist --port 8788 --config ../wrangler.jsonc",
-    "build": "tsc -b && vite build && node scripts/prepare-pages.mjs",
+    "build": "tsc -b && vite build",
     "build:functions": "wrangler pages functions build functions --outdir .wrangler/pages-functions --project-directory . --build-output-directory dist --compatibility-date 2026-07-23 --compatibility-flag nodejs_compat",
     "preview": "vite preview",
     "cf:types": "wrangler types --config ../wrangler.jsonc",

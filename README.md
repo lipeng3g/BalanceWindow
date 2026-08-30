@@ -9,7 +9,7 @@ Balance Window is an iOS-first, local-first cash-flow forecaster for people who 
   &nbsp;&nbsp;·&nbsp;&nbsp;
   <a href="https://balancewindow.top/">See the product</a>
   &nbsp;&nbsp;·&nbsp;&nbsp;
-  <a href="https://balancewindow.top/app">Try the open-source web app</a>
+  <a href="https://app.balancewindow.top/">Try the open-source web app</a>
 </p>
 
 <p align="center">
@@ -55,7 +55,7 @@ This repository contains the open-source desktop web companion. It uses the same
 
 The screenshot above is a **legacy desktop preview** from the earlier PC build. It is included to show the desktop workflow; the current brand and product direction are Balance Window.
 
-- **Use the hosted app:** [balancewindow.top/app](https://balancewindow.top/app)
+- **Use the hosted app:** [app.balancewindow.top](https://app.balancewindow.top/)
 - **Browse the source:** [github.com/lipeng3g/future-money](https://github.com/lipeng3g/future-money)
 - **Read the web-specific notes:** [`web/README.md`](./web/README.md)
 
@@ -92,7 +92,7 @@ The web app is local-first. Do not commit Cloudflare secrets, OAuth credentials,
 | --- | --- |
 | iOS product page | [balancewindow.top](https://balancewindow.top/) |
 | App Store listing | [Balance Window: Cash Flow](https://apps.apple.com/us/app/balance-window-cash-flow/id6804171868) |
-| Hosted desktop web app | [balancewindow.top/app](https://balancewindow.top/app) |
+| Hosted desktop web app | [app.balancewindow.top](https://app.balancewindow.top/) |
 | Privacy | [balancewindow.top/privacy](https://balancewindow.top/privacy) |
 | Support | [balancewindow.top/support](https://balancewindow.top/support) |
 | Public source | [GitHub](https://github.com/lipeng3g/future-money) |

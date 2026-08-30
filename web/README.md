@@ -2,7 +2,8 @@
 
 This directory contains the open-source web app for Balance Window, a local-first personal cash-flow planner.
 
-- Public app: <https://balancewindow.top>
+- iOS product: <https://balancewindow.top/>
+- Public web app: <https://app.balancewindow.top/>
 - Privacy: <https://balancewindow.top/privacy>
 - Support: <https://balancewindow.top/support>
 

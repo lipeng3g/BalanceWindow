@@ -1,4 +1,0 @@
-# Keep the public root focused on the iOS product while the open-source web app
-# remains available at a deliberate, secondary path.
-/ios / 301
-/ios/ / 301

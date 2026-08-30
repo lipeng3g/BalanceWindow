@@ -16,6 +16,7 @@ while IFS= read -r hit; do
 done < <(
   rg -n -i --hidden \
     --glob '!.git/**' \
+    --glob '!.git' \
     --glob '!docs/**' \
     --glob '!node_modules/**' \
     --glob '!web/dist/**' \
@@ -44,7 +45,11 @@ for hit in "${hits[@]}"; do
       # user-visible FutureMoney sentence must fail the audit.
       if [[ "$line" == *'FutureMoney` 仅作为仓库路径'* ||
             "$line" == *'historical `FutureMoney` name remains only in approved technical identities'* ||
+            "$line" == *'historical `FutureMoney` name for update and deployment continuity'* ||
             "$line" == *'FutureMoney/       # 历史仓库/技术目录名'* ||
+            "$line" == *'cd future-money'* ||
+            "$line" == *'github.com/lipeng3g/future-money'* ||
+            "$line" == *'raw.githubusercontent.com/lipeng3g/future-money/'* ||
             "$line" == *'future-money.pages.dev'* ||
             "$line" == *'com.ponzio.futuremoney'* ]]; then
         is_allowed=1
