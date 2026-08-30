@@ -28,6 +28,16 @@ export class AuthConfigurationError extends Error {
   }
 }
 
+export const AUTH_FALLBACK_URL = 'https://api.balancewindow.top';
+export const AUTH_TRUSTED_ORIGINS = [
+  'https://balancewindow.top',
+  'https://app.balancewindow.top',
+  'https://api.balancewindow.top',
+  'https://*.balancewindow.top',
+  'http://localhost:8788',
+  'http://127.0.0.1:8788',
+] as const;
+
 export function createAuth(bindings: AuthBindings) {
   const secret = requireAuthSecret(bindings.BETTER_AUTH_SECRET);
   const apple = getAppleProviderCredentials(bindings);
@@ -43,7 +53,7 @@ export function createAuth(bindings: AuthBindings) {
         'localhost:8788',
         '127.0.0.1:8788',
       ],
-      fallback: 'https://balancewindow.top',
+      fallback: AUTH_FALLBACK_URL,
       protocol: 'auto',
     },
     basePath: '/api/auth',
@@ -53,12 +63,7 @@ export function createAuth(bindings: AuthBindings) {
       schema: authSchema,
       transaction: false,
     }),
-    trustedOrigins: [
-      'https://balancewindow.top',
-      'https://*.balancewindow.top',
-      'http://localhost:8788',
-      'http://127.0.0.1:8788',
-    ],
+    trustedOrigins: [...AUTH_TRUSTED_ORIGINS],
     socialProviders: {
       ...(apple ? { apple } : {}),
       ...(github ? { github } : {}),

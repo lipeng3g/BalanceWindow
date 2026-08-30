@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
+  AUTH_FALLBACK_URL,
+  AUTH_TRUSTED_ORIGINS,
   AuthConfigurationError,
   createAuth,
   getAuthProviderAvailability,
@@ -16,6 +18,12 @@ function createBindings(secret?: string): AuthBindings {
 }
 
 describe('createAuth', () => {
+  it('keeps the dedicated production API origin as an explicit contract', () => {
+    expect(AUTH_FALLBACK_URL).toBe('https://api.balancewindow.top');
+    expect(AUTH_TRUSTED_ORIGINS).toContain('https://app.balancewindow.top');
+    expect(AUTH_TRUSTED_ORIGINS).toContain('https://api.balancewindow.top');
+  });
+
   it('requires an authentication secret', () => {
     expect(() => createAuth(createBindings())).toThrowError(
       new AuthConfigurationError('AUTH_SECRET_MISSING'),
